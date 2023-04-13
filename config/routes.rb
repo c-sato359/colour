@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homes/top'
   get 'search', to: 'image#seach', as: 'search' 
   
   #devise_for :followings
@@ -12,10 +13,16 @@ Rails.application.routes.draw do
   get 'coment/show'
   get 'coment/edit'
   get 'coment/new'
-  get 'image/new'
-  get 'image/index'
-  get 'image/show'
-  get 'image/edit'
+  #get 'image/new'
+  #get 'image/index'
+  #get 'image/show'
+  #get 'image/edit'
+  
+  
+     # patch '/customers/withdraw', to: 'customers#withdraw'
+  resources :image
+  resources :customers
+  
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -30,19 +37,18 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  patch 'customers' => "public/customers#update"
+#  patch 'customers' => "public/customers#update"
 
  scope module: :public do
     get '/about', to: 'homes#about'
     #get 'homes/top'#, to: 'customers#new'
-    root to: 'homes#top'
+    #root to: 'homes#top'
    # post '/homes/guest_sign_in', to: 'homes#new_guest'
-    get 'customers/my_page' => "customers#show"
-    get 'customers/edit/my_page' => "customers#edit"
-   # resources :customers
+     #'customers' => "customers#show"
+   # get 'customers/edit/my_page' => "customers#edit"
     get '/customers/unsubscribe', to: 'customers#unsubscribe'
-    patch '/customers/withdraw', to: 'customers#withdraw'
-    resources :image
+
+   
     #delete "all_destroy" => "cart_items#all_destroy",as: "customers_all_destroy"
   end
 

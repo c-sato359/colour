@@ -1,5 +1,6 @@
 class Follower < ApplicationRecord
-  
+belong_to :notification
+
   #belongs_to :
   
   # Include default devise modules. Others available are:
