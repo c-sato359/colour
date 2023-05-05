@@ -15,6 +15,9 @@ class Customer < ApplicationRecord
 #  has_many :yyy, through: :xxx, source: :zzz
 
 
+def active_for_authentication?
+   # super && (self.is_deleted == false)
+end
  
 validates :name,  presence: true
 end

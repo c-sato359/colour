@@ -1,0 +1,9 @@
+<h1>マイページ</h1>
+
+<tbody>
+   
+    <%= link_to 'Show', image_path(image), class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', image_path(image), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+    </tr>
+</tbody>

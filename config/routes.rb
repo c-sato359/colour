@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'homes/top'
+      root to: 'homes#top'
+
   get 'search', to: 'image#seach', as: 'search' 
   
   devise_for :customers,skip: [:passwords], controllers: {
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
  scope module: :public do
     #get '/about', to: 'homes#about'
-  root to: 'homes#top'
+  #root to: 'homes#top'
      # patch '/customers/withdraw', to: 'customers#withdraw'
   resources :image
   resources :customers

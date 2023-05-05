@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.customer_id = current_customer.id
-    if @image.save
+    if @image.save!
       redirect_to images_path
     else
       render customer_path(current)
@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def new
-    @customer = Customer.new
+    @customer = Customer.new(customer_params)
     @customer = Customer.find(params[:id])
   end
 
@@ -63,6 +63,6 @@ class Public::CustomersController < ApplicationController
   
   private
   def customer_params
-  	params.require(:customer).permit(:name, :email)
+  	params.require(:customer).permit(:email, :name)
   end
 end
